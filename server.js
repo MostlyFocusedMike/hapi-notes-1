@@ -6,24 +6,26 @@ const server = new Hapi.Server({
     port: 3101
   });
 
-server.route({  
-    method: 'GET',
-    path: '/',
-    handler: (request, h) => {
-      return 'I am the home route'
+// add each route
+server.route([
+    {
+        method: 'GET',
+        path: '/',
+        handler: (request, h) => {
+            return 'I am the home route';
+        },
     },
-});
-
-server.route({  
-    method: 'GET',
-    path: '/example',
-    handler: (request, h) => {
-      return 'I am an example url'
-    },
-});
+    {
+        method: 'GET',
+        path: '/example',
+        handler: (request, h) => {
+            return { msg: 'I am json' };
+        },
+    }
+]);
 
 // define server start function
-async function start () {
+const launch = async () => {
     try {
         await server.start(); // the builtin server.start method is async
     } catch (err) {
@@ -31,8 +33,8 @@ async function start () {
         process.exit(1);
     };
 
-    console.log('Server running at: ', server.info.uri);
+    console.log(`Server running at ${server.info.uri}`);
 }
 
 // start your server
-start();
+launch();

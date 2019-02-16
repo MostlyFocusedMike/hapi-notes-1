@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx nodemon server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "hapi": "^17.8.1"
+    "hapi": "^17.8.1",
+    "nodemon": "^1.18.10"
   }
 }
